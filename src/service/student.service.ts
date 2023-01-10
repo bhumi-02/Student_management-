@@ -4,9 +4,11 @@ import { CreateStudentDto } from 'src/dto/create-student.dto';
 import { IStudent } from 'src/interface/student.interface';
 import { Model } from "mongoose";
 import { UpdateStudentDto } from 'src/dto/update-student.dto';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class StudentService {
+  
     constructor(@InjectModel('Student') private studentModel: Model<IStudent>) { }
 
     async createStudent(createStudentDto: CreateStudentDto): Promise<IStudent> {
@@ -30,13 +32,7 @@ export class StudentService {
         return studentData;
     }
 
-    async getStudent(studentId: string): Promise<IStudent> {
-        const existingStudent = await this.studentModel.findById(studentId).exec();
-        if (!existingStudent) {
-            throw new NotFoundException(`Student #${studentId} not found`);
-        }
-        return existingStudent;
-    }
+
 
     async deleteStudent(studentId: string): Promise<IStudent> {
         const deletedStudent = await this.studentModel.findByIdAndDelete(studentId);

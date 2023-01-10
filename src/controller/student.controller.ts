@@ -3,11 +3,12 @@ import { CreateStudentDto } from 'src/dto/create-student.dto';
 import { UpdateStudentDto } from 'src/dto/update-student.dto';
 import { StudentService } from 'src/service/student.service';
 
+
 @Controller('student')
 export class StudentController {
     constructor(private readonly studentService: StudentService) { }
-
-    @Post()
+/*-----------------------------------------Register Student------------------------------------------------------*/
+    @Post('create')
     async createStudent(@Res() response, @Body() createStudentDto: CreateStudentDto) {
         try {
             const newStudent = await this.studentService.createStudent(createStudentDto);
@@ -23,6 +24,7 @@ export class StudentController {
             });
         }
     }
+/*-----------------------------------------Update Student------------------------------------------------------*/
 
     @Put('/:id')
     async updateStudent(@Res() response,
@@ -51,6 +53,7 @@ export class StudentController {
             return response.status(err.status).json(err.response);
         }
     }
+/*-----------------------------------------Delete Student------------------------------------------------------*/
 
     @Delete('/:id')
     async deleteStudent(@Res() response, @Param('id') studentId: string) {

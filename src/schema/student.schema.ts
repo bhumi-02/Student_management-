@@ -1,7 +1,10 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose"
 @Schema()
 export class Student {
-  
+   @Prop()
+   email:string;
+   @Prop()
+   password: string;
    @Prop()
    name: string;
    @Prop()

@@ -6,7 +6,7 @@ import { StudentController } from './controller/student.controller';
 import { StudentSchema } from './schema/student.schema';
 import { StudentService } from './service/student.service';
 @Module({
-  imports: [MongooseModule.forRoot('mongodb+srv://bhumi02:Lldq1gK03cWlGYPd@cluster0.uuq82ib.mongodb.net/test',{dbName: 'studentdb'}),
+  imports: [MongooseModule.forRoot('mongodb+srv://functionUpUranium-2:JECVxS0v96bKoG0a@cluster0.j1yrl.mongodb.net/bhumi-DB',{dbName: 'studentdb'}),
   MongooseModule.forFeature([{ name: 'Student', schema: StudentSchema }])
 ],
   controllers: [AppController,StudentController],
